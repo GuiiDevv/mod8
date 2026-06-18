@@ -38,11 +38,12 @@ class Palpite : public Apostador {
 private:
     int palpiteCasa;
     int palpiteFora;
-    vector<int> pontosPorApostador;
+    vector<int> pontosPorApostador; // criei um vetor dinamico para guardar os pontos de cada apostador
 public:
     Palpite(string n, int palc, int palf) : Apostador(n), palpiteCasa(palc), palpiteFora(palf) {}
 
     void criar_palpite() {
+        //resize basicamente ta fazendo com que o pontos do apostador vai ter mesmo numero de posicoes que apostadores;
         pontosPorApostador.resize(apostadores.size()); //tive que pegar com ia uma forma de adicionar pontos para cada apostador, criei um vetor dinamico como variavel e adicionei com size para apostadores;
         for (size_t i = 0; i < apostadores.size(); i++) {
             cout << "===================================" << endl;

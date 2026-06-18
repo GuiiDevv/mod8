@@ -27,7 +27,7 @@ public:
     }
     
     void exibir_info() const {
-        cout << "== apostadores cadastrados ==\n";
+        cout << "===== apostadores cadastrados =====\n";
         for (size_t i = 0; i < apostadores.size(); i++) { // aqui crio o for com condicoes e o "apostadores.size" retorna a quantida de elements/string;
             cout << (i + 1) << " - " << apostadores[i] << endl; //aqui com meu i, pego cada nome que tem dentro do apostadores;
         }
@@ -38,35 +38,55 @@ class Palpite : public Apostador {
 private:
     int palpiteCasa;
     int palpiteFora;
-    int rodada;
-    //string confronto;
+    vector<int> pontosPorApostador;
 public:
-    Palpite(string n, int palc, int palf, int r) : Apostador(n), palpiteCasa(palc), palpiteFora(palf), rodada(r) {}
+    Palpite(string n, int palc, int palf) : Apostador(n), palpiteCasa(palc), palpiteFora(palf) {}
 
     void criar_palpite() {
-        for (size_t i = 0; i <= 3; i++) {
-            cout << "primeiro palpite para " << confrontos[i] << ": " << endl;
-        
-        cout << "gols do time da casa: ";
-        cin >> palpiteCasa;
+        pontosPorApostador.resize(apostadores.size()); //tive que pegar com ia uma forma de adicionar pontos para cada apostador, criei um vetor dinamico como variavel e adicionei com size para apostadores;
+        for (size_t i = 0; i < apostadores.size(); i++) {
+            cout << "===================================" << endl;
+            cout << "palpites para o jogador " << apostadores[i] << " : " << endl;
+            for (size_t j = 0; j < 4; j++) {
+                cout << "primeiro palpite para " << confrontos[j] << ": " << endl;
+            
+                cout << "gols do time da casa: ";
+                cin >> palpiteCasa;
 
-        cout << "gols do time visitante: ";
-        cin >> palpiteFora;
+                cout << "gols do time visitante: ";
+                cin >> palpiteFora;
 
-        cout << "seu palpite foi: " << palpiteCasa << " X " << palpiteFora << endl;
+                cout << "seu palpite foi: " << palpiteCasa << " X " << palpiteFora << endl;
+
+                if (palpiteCasa == resultadosCasa[j] && palpiteFora == resultadosFora[j]) {
+                    pontosPorApostador[i] += 10;
+                }
+            }
         }
     }
+    void exibir_info() {
+        cout << "===================================" << endl;
+        for (size_t i = 0; i < apostadores.size(); i++) {
+            cout << "total de pontos do Apostador " << apostadores[i] << " : " << pontosPorApostador[i] << endl;
+        }
+    } 
 };
-
-vector<Palpite>apostas;
 
 int main(){
     Apostador apost("gui");
-    Palpite p("gui", 0, 0, 0);
+    Palpite p("gui", 0, 0);
 
     apost.criar_apostador(apostadores);
     apost.exibir_info();
     p.criar_palpite();
+    p.exibir_info();
 
     return 0;
 }
+
+
+
+
+// } else if (palpiteCasa >! resultadosFora[j] && palpiteFora >! resultadosCasa[j]) {
+    //pontosPorApostador[i] += 5;
+    //}

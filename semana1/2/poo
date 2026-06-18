@@ -1,0 +1,10 @@
+//objeto e uma estancia da class, com atributos e metodos;
+//ex- carro:
+    //atributos: elementos que definem informacoes;
+        //ex: cor, motor, porta, ano;
+
+    //comportamentos: acoes que se pode realizar pelo objeto;
+        //ex: acelerar, frear, estacionar;
+
+
+

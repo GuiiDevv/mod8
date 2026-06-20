@@ -1,4 +1,3 @@
-// aula 6;
 // professora: erika dilly;
 #include <iostream>
 using namespace std;

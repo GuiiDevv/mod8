@@ -58,9 +58,14 @@ public:
                 cin >> palpiteFora;
 
                 cout << "seu palpite foi: " << palpiteCasa << " X " << palpiteFora << endl;
-
                 if (palpiteCasa == resultadosCasa[j] && palpiteFora == resultadosFora[j]) {
                     pontosPorApostador[i] += 10;
+                } else if (resultadosCasa[j] == resultadosFora[j] && palpiteCasa == palpiteFora) {
+                    pontosPorApostador[i] += 5;
+                } else if (resultadosCasa[j] > resultadosFora[j] && palpiteCasa > palpiteFora) {
+                    pontosPorApostador[i] += 5;
+                } else if (resultadosCasa[j] < resultadosFora[j] && palpiteCasa < palpiteFora) {
+                    pontosPorApostador[i] += 5;
                 }
             }
         }
@@ -68,7 +73,7 @@ public:
     void exibir_info() {
         cout << "===================================" << endl;
         for (size_t i = 0; i < apostadores.size(); i++) {
-            cout << "total de pontos do Apostador " << apostadores[i] << " : " << pontosPorApostador[i] << endl;
+            cout << "total de pontos do Apostador " << apostadores[i] << ": " << pontosPorApostador[i] << " pontos." << endl;
         }
     } 
 };

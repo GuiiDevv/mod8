@@ -1,5 +1,4 @@
-// aula 6;
-// professora: erika dilly;
+;/ professora: erika dilly;
 #include <iostream>
 #include <string>
 using namespace std;
